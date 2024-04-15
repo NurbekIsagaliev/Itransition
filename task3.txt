@@ -1,0 +1,22 @@
+Запуск с 3 параметрами:
+php task3.php rock paper scissors
+
+Запуск с 7 параметрами:
+php task3.php rock paper scissors lizard Spock fire water
+
+Запуск с неправильными параметрами (повторение):
+php task3.php rock rock paper
+
+Запуск с неправильными параметрами (четное число):
+php task3.php rock paper scissors lizard
+
+Запуск с неправильными параметрами (один параметр):
+php task3.php rock
+
+Запуск с неправильными параметрами (отсутствие параметров):
+php task3.php
+
+Генерация таблицы помощи (на 5 параметрах):
+php task3.php rock paper scissors lizard Spock
+
+
