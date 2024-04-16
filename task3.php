@@ -1,4 +1,7 @@
 <?php
+require 'vendor/autoload.php';
+
+use League\CLImate\CLImate;
 
 class MoveTable
 {
@@ -122,24 +125,25 @@ class Game
 
         echo "HMAC key: " . $this->key . PHP_EOL;
     }
-
     private function showHelp()
     {
+        $climate = new CLImate();
         $size = $this->moveTable->getSize();
         if (!is_null($size)) {
-            echo str_pad("", 6);
+            $headers = ["Moves"];
             foreach ($this->moves as $move) {
-                echo str_pad($move, 10);
+                $headers[] = $move;
             }
-            echo PHP_EOL;
+        $tableData[] = $headers;
             for ($i = 0; $i < $size; $i++) {
-                echo str_pad($this->moves[$i], 6);
+                $rowData = [$this->moves[$i]];
                 for ($j = 0; $j < $size; $j++) {
                     $result = $this->moveTable->getResult($i + 1, $j + 1);
-                    echo str_pad($result, 10);
+                    $rowData[] = $result;
                 }
-                echo PHP_EOL;
+                $tableData[] = $rowData;
             }
+            $climate->table($tableData);
         }
         $this->start();
     }
